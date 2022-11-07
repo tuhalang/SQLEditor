@@ -5,8 +5,8 @@ server:
 spring:
   datasource:
     jdbcUrl: jdbc:oracle:thin:@//10.19.144.76:1521/myetapp
-    username: ekptghqlivetest
-    password: ekptghqlivetest
+    username: ekptghqlive
+    password: ekptghqv6live
   jpa:
     database-platform: org.hibernate.dialect.Oracle10gDialect
     show-sql: true
