@@ -1,0 +1,14 @@
+server:
+  servlet:
+    context-path: /
+  address: 0.0.0.0
+spring:
+  datasource:
+    jdbcUrl: jdbc:oracle:thin:@51.79.181.112:1522:orcln
+    username: ekptghqlivetest
+    password: ekptghqlivetest
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update

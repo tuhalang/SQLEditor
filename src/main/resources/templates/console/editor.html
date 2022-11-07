@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+<div th:replace="layout :: header"></div>
+<div class="box">
+  <div class="panel-body">
+    <section class="container">
+        <div class="form-group has-error" th:if="${error}" th:text="${error}">
+        </div>
+        <form role="form" th:action="@{/console/editor}" th:object="${queryRequest}" method="post">
+          <div class="form-group row" th:classappend="${#fields.hasErrors('query')} ? 'has-danger'">
+            <br/>
+            <div class="col-sm-12 d-flex flex-column justify-content-center">
+              <textarea th:field="*{query}" style="width: 100%; text-transform : uppercase" cols="20" rows="20"> </textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <button type="submit" class="btn btn-success btn-md">
+              <span class="pl-1" th:text="#{editor.run-query}"></span>
+            </button>
+          </div>
+        </form>
+        <div class="form-group row" th:if="${result != null}" >
+            <div class="col-sm-12">
+                <label th:text="#{query.success}"></label>
+                <div class="table-responsive">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col" th:each="field: ${result.header}" th:text="${field}"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr th:each="row: ${result.rows}">
+                        <td th:each="field : ${result.header}" th:text="${row.get(field)}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+            <div class="col-sm-12" style="color: red">
+                <label th:text="#{query.fail}"></label>
+                <span th:text="${result.error}"></span>
+            </div>
+        </div>
+    </section>
+
+  </div>
+</div>
+
+<div th:replace="layout :: footer"></div>
+</body>
+</html>
