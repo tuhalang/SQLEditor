@@ -21,8 +21,5 @@ public class QueryRequest {
         if (query.endsWith(";")) {
             query = query.substring(0, query.length() - 1);
         }
-        if (!query.contains("WHERE")) {
-            query += " WHERE ROWNUM < " + limit;
-        }
     }
 }

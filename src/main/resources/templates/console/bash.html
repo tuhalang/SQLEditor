@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+<div th:replace="layout :: header"></div>
+<div class="box">
+  <div class="panel-body">
+    <section class="container">
+        <div class="form-group has-error" th:if="${error}" th:text="${error}">
+        </div>
+        <form role="form" th:action="@{/console/bash}" th:object="${bashRequest}" method="post">
+          <div class="form-group row" th:classappend="${#fields.hasErrors('script')} ? 'has-danger'">
+            <br/>
+            <div class="col-sm-12 d-flex flex-column justify-content-center">
+              <textarea th:field="*{script}" style="width: 100%; text-transform : uppercase" cols="20" rows="5"> </textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <button type="submit" class="btn btn-success btn-md">
+              <span class="pl-1" th:text="#{editor.run-bash}"></span>
+            </button>
+          </div>
+        </form>
+        <div class="form-group row" th:if="${result != null}" >
+            <div class="col-sm-12" style="color: red">
+                <span th:text="${result.output}"></span>
+            </div>
+        </div>
+    </section>
+
+  </div>
+</div>
+
+<div th:replace="layout :: footer"></div>
+</body>
+</html>

@@ -1,6 +1,6 @@
 server:
   servlet:
-    context-path: /
+    context-path: /SQLEditor
   address: 0.0.0.0
 spring:
   datasource:
